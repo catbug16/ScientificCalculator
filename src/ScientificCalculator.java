@@ -44,14 +44,16 @@ public class ScientificCalculator {
                     case 10:
                         performNaturalLogarithm(scanner);
                         break;
+                    case 11:
+                        performLogarithmBase10(scanner);
+                        break;
+                    case 12:
+                        performAbsoluteValue(scanner);
+                        break;
                     case 0:
                         System.out.println("Exiting calculator. Goodbye!");
                         running = false;
                         break;
-                    case 11:
-                        performLogarithmBase10(scanner);
-                        break;
-
                     default:
                         System.out.println("Invalid choice. Please enter a valid number.");
                 }
@@ -78,6 +80,7 @@ public class ScientificCalculator {
         System.out.println("8. Cosine");
         System.out.println("10. Natural Logarithm (ln)");
         System.out.println("11. Logarithm Base 10 (log)");
+        System.out.println("12. Absolute Value");
         System.out.println("0. Exit");
         System.out.print("Choose an option: ");
     }
@@ -313,6 +316,21 @@ public class ScientificCalculator {
         return Math.log10(num); // Base-10 logarithm
     }
 
+    public static void performAbsoluteValue(Scanner scanner) {
+        try {
+            System.out.print("Enter a number: ");
+            double num = scanner.nextDouble();
+
+            double result = calculateAbsoluteValue(num);
+            System.out.printf("Absolute value of %.4f = %.4f\n", num, result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+            scanner.nextLine(); // Clear invalid input
+        }
+    }
+    public static double calculateAbsoluteValue(double num) {
+        return Math.abs(num);
+    }
 
 
 
