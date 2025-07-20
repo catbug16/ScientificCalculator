@@ -50,6 +50,15 @@ public class ScientificCalculator {
                     case 12:
                         performAbsoluteValue(scanner);
                         break;
+                    case 13:
+                        performRoundNumber(scanner);
+                        break;
+                    case 14:
+                        performCeilingNumber(scanner);
+                        break;
+                    case 15:
+                        performFloorNumber(scanner);
+                        break;
                     case 0:
                         System.out.println("Exiting calculator. Goodbye!");
                         running = false;
@@ -81,6 +90,9 @@ public class ScientificCalculator {
         System.out.println("10. Natural Logarithm (ln)");
         System.out.println("11. Logarithm Base 10 (log)");
         System.out.println("12. Absolute Value");
+        System.out.println("13. Round Number");
+        System.out.println("14. Ceiling");
+        System.out.println("15. Floor");
         System.out.println("0. Exit");
         System.out.print("Choose an option: ");
     }
@@ -331,7 +343,56 @@ public class ScientificCalculator {
     public static double calculateAbsoluteValue(double num) {
         return Math.abs(num);
     }
+    public static void performRoundNumber(Scanner scanner) {
+        try {
+            System.out.print("Enter a number to round: ");
+            double num = scanner.nextDouble();
 
+            long result = roundNumber(num);
+            System.out.println("Rounded value: " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+            scanner.nextLine();
+        }
+    }
+
+    public static void performCeilingNumber(Scanner scanner) {
+        try {
+            System.out.print("Enter a number to find the ceiling: ");
+            double num = scanner.nextDouble();
+
+            double result = ceilingNumber(num);
+            System.out.println("Ceiling value: " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+            scanner.nextLine();
+        }
+    }
+
+    public static void performFloorNumber(Scanner scanner) {
+        try {
+            System.out.print("Enter a number to find the floor: ");
+            double num = scanner.nextDouble();
+
+            double result = floorNumber(num);
+            System.out.println("Floor value: " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+            scanner.nextLine();
+        }
+    }
+
+    public static long roundNumber(double num) {
+        return Math.round(num);
+    }
+
+    public static double ceilingNumber(double num) {
+        return Math.ceil(num);
+    }
+
+    public static double floorNumber(double num) {
+        return Math.floor(num);
+    }
 
 
 
