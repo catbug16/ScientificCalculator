@@ -59,6 +59,12 @@ public class ScientificCalculator {
                     case 15:
                         performFloorNumber(scanner);
                         break;
+                    case 16:
+                        performFindMin(scanner);
+                        break;
+                    case 17:
+                        performFindMax(scanner);
+                        break;
                     case 0:
                         System.out.println("Exiting calculator. Goodbye!");
                         running = false;
@@ -93,6 +99,8 @@ public class ScientificCalculator {
         System.out.println("13. Round Number");
         System.out.println("14. Ceiling");
         System.out.println("15. Floor");
+        System.out.println("16. Find Minimum");
+        System.out.println("17. Find Maximum");
         System.out.println("0. Exit");
         System.out.print("Choose an option: ");
     }
@@ -394,6 +402,44 @@ public class ScientificCalculator {
         return Math.floor(num);
     }
 
+    public static void performFindMin(Scanner scanner) {
+        try {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
+
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+
+            double result = findMin(num1, num2);
+            System.out.println("Minimum value: " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+            scanner.nextLine(); // clear invalid input
+        }
+    }
+
+    public static void performFindMax(Scanner scanner) {
+        try {
+            System.out.print("Enter the first number: ");
+            double num1 = scanner.nextDouble();
+
+            System.out.print("Enter the second number: ");
+            double num2 = scanner.nextDouble();
+
+            double result = findMax(num1, num2);
+            System.out.println("Maximum value: " + result);
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter numeric values.");
+            scanner.nextLine(); // clear invalid input
+        }
+    }
+    public static double findMin(double num1, double num2) {
+        return Math.min(num1, num2);
+    }
+
+    public static double findMax(double num1, double num2) {
+        return Math.max(num1, num2);
+    }
 
 
 
