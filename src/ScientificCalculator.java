@@ -93,6 +93,7 @@ public class ScientificCalculator {
         System.out.println("6. Power");
         System.out.println("7. Sine");
         System.out.println("8. Cosine");
+        System.out.println("9. Tangent");
         System.out.println("10. Natural Logarithm (ln)");
         System.out.println("11. Logarithm Base 10 (log)");
         System.out.println("12. Absolute Value");
@@ -267,7 +268,7 @@ public class ScientificCalculator {
             if (result == null) {
                 System.out.println("Tangent is undefined at " + degrees + " degrees.");
             } else {
-                System.out.println("tan(" + degrees + ") = " + result);
+                System.out.printf("tan(%.1f) = %.4f\n", degrees, result);
             }
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a numeric value.");
@@ -440,7 +441,6 @@ public class ScientificCalculator {
     public static double findMax(double num1, double num2) {
         return Math.max(num1, num2);
     }
-
 
 
 
