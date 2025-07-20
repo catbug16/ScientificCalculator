@@ -48,6 +48,10 @@ public class ScientificCalculator {
                         System.out.println("Exiting calculator. Goodbye!");
                         running = false;
                         break;
+                    case 11:
+                        performLogarithmBase10(scanner);
+                        break;
+
                     default:
                         System.out.println("Invalid choice. Please enter a valid number.");
                 }
@@ -73,6 +77,7 @@ public class ScientificCalculator {
         System.out.println("7. Sine");
         System.out.println("8. Cosine");
         System.out.println("10. Natural Logarithm (ln)");
+        System.out.println("11. Logarithm Base 10 (log)");
         System.out.println("0. Exit");
         System.out.print("Choose an option: ");
     }
@@ -283,7 +288,30 @@ public class ScientificCalculator {
         }
         return Math.log(num); // Natural log (base e)
     }
+    public static void performLogarithmBase10(Scanner scanner) {
+        try {
+            System.out.print("Enter a positive number: ");
+            double num = scanner.nextDouble();
 
+            Double result = calculateLogarithmBase10(num);
+
+            if (result == null) {
+                System.out.println("Error: Logarithm base 10 is undefined for zero or negative numbers.");
+            } else {
+                System.out.printf("log10(%.4f) = %.4f\n", num, result);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+            scanner.nextLine(); // Clear invalid input
+        }
+    }
+
+    public static Double calculateLogarithmBase10(double num) {
+        if (num <= 0) {
+            return null; // log10 is undefined for zero or negative numbers
+        }
+        return Math.log10(num); // Base-10 logarithm
+    }
 
 
 
