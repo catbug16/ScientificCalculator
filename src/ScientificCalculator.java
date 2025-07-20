@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class ScientificCalculator {
 
@@ -25,6 +26,10 @@ public class ScientificCalculator {
                     case 4:
                         performDivision(scanner);
                         break;
+                    case 5:
+                        performSquareRoot(scanner);
+                        break;
+
                     case 0:
                         System.out.println("Exiting calculator. Goodbye!");
                         running = false;
@@ -44,14 +49,16 @@ public class ScientificCalculator {
     }
 
     public static void displayMenu() {
-        System.out.println("\n=== Scientific Calculator ===");
+        System.out.println("\n--- Scientific Calculator ---");
         System.out.println("1. Add");
         System.out.println("2. Subtract");
         System.out.println("3. Multiply");
         System.out.println("4. Divide");
-        System.out.println("0. Exit");
-        System. out.print("Choose an operation: ");
+        System.out.println("5. Square Root");
+        System.out.println("6. Exit");
+        System.out.print("Choose an option: ");
     }
+
 
     // Method to perform the addition and display result
     public static void performAddition(Scanner scanner) {
@@ -128,6 +135,30 @@ public class ScientificCalculator {
         }
         return num1 / num2;
     }
+
+    public static double calculateSquareRoot(double num) {
+        return Math.sqrt(num);
+    }
+
+    public static void performSquareRoot(Scanner scanner) {
+        System.out.print("Enter a non-negative number: ");
+        try {
+            double num = scanner.nextDouble();
+            if (num < 0) {
+                System.out.println("Error: Cannot calculate square root of a negative number.");
+            } else {
+                double result = calculateSquareRoot(num);
+                System.out.println("Result: " + result);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.nextLine(); // clear the invalid input
+        }
+
+
+
+    }
+
 
 
 }
