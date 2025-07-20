@@ -39,6 +39,9 @@ public class ScientificCalculator {
                     case 8:
                         performCosine(scanner);
                         break;
+                    case 9:
+                        performTangent(scanner);
+                        break;
                     case 0:
                         System.out.println("Exiting calculator. Goodbye!");
                         running = false;
@@ -67,6 +70,7 @@ public class ScientificCalculator {
         System.out.println("6. Power");
         System.out.println("7. Sine");
         System.out.println("8. Cosine");
+        System.out.println("9. Tangent");
         System.out.println("0. Exit");
         System.out.print("Choose an option: ");
     }
@@ -222,6 +226,38 @@ public class ScientificCalculator {
         double radians = Math.toRadians(degrees);
         return Math.cos(radians);
     }
+
+    public static void performTangent(Scanner scanner) {
+        try {
+            System.out.print("Enter angle in degrees: ");
+            double degrees = scanner.nextDouble();
+
+            Double result = calculateTangent(degrees);
+
+            if (result == null) {
+                System.out.println("Tangent is undefined at " + degrees + " degrees.");
+            } else {
+                System.out.println("tan(" + degrees + ") = " + result);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+            scanner.nextLine(); // Clear invalid input
+        }
+    }
+
+
+    public static Double calculateTangent(double degrees) {
+        double radians = Math.toRadians(degrees);
+        double cosine = Math.cos(radians);
+
+        if (Math.abs(cosine) < 1e-10) {
+            // Tangent is undefined when cosine is zero
+            return null;
+        }
+
+        return Math.tan(radians);
+    }
+
 
 
 
