@@ -29,7 +29,6 @@ public class ScientificCalculator {
                     case 5:
                         performSquareRoot(scanner);
                         break;
-
                     case 6:
                         performPower(scanner);
                         break;
@@ -41,6 +40,9 @@ public class ScientificCalculator {
                         break;
                     case 9:
                         performTangent(scanner);
+                        break;
+                    case 10:
+                        performNaturalLogarithm(scanner);
                         break;
                     case 0:
                         System.out.println("Exiting calculator. Goodbye!");
@@ -70,7 +72,7 @@ public class ScientificCalculator {
         System.out.println("6. Power");
         System.out.println("7. Sine");
         System.out.println("8. Cosine");
-        System.out.println("9. Tangent");
+        System.out.println("10. Natural Logarithm (ln)");
         System.out.println("0. Exit");
         System.out.print("Choose an option: ");
     }
@@ -257,6 +259,32 @@ public class ScientificCalculator {
 
         return Math.tan(radians);
     }
+    public static void performNaturalLogarithm(Scanner scanner) {
+        try {
+            System.out.print("Enter a positive number: ");
+            double num = scanner.nextDouble();
+
+            Double result = calculateNaturalLogarithm(num);
+
+            if (result == null) {
+                System.out.println("Error: Natural logarithm is undefined for zero or negative numbers.");
+            } else {
+                System.out.printf("ln(%.4f) = %.4f\n", num, result);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a numeric value.");
+            scanner.nextLine(); // Clear invalid input
+        }
+    }
+
+    public static Double calculateNaturalLogarithm(double num) {
+        if (num <= 0) {
+            return null; // ln is undefined for 0 or negative numbers
+        }
+        return Math.log(num); // Natural log (base e)
+    }
+
+
 
 
 
