@@ -22,6 +22,9 @@ public class ScientificCalculator {
                     case 3:
                         performMultiplication(scanner);
                         break;
+                    case 4:
+                        performDivision(scanner);
+                        break;
                     case 0:
                         System.out.println("Exiting calculator. Goodbye!");
                         running = false;
@@ -29,6 +32,7 @@ public class ScientificCalculator {
                     default:
                         System.out.println("Invalid choice. Please enter a valid number.");
                 }
+
 
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter numbers only.");
@@ -44,8 +48,9 @@ public class ScientificCalculator {
         System.out.println("1. Add");
         System.out.println("2. Subtract");
         System.out.println("3. Multiply");
+        System.out.println("4. Divide");
         System.out.println("0. Exit");
-        System.out.print("Choose an operation: ");
+        System. out.print("Choose an operation: ");
     }
 
     // Method to perform the addition and display result
@@ -99,6 +104,29 @@ public class ScientificCalculator {
     // Method to multiply two numbers
     public static double multiply(double num1, double num2) {
         return num1 * num2;
+    }
+
+    // Method to handle user input and display division result
+    public static void performDivision(Scanner scanner) {
+        System.out.print("Enter the numerator: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter the denominator: ");
+        double num2 = scanner.nextDouble();
+
+        double result = divide(num1, num2);
+        if (!Double.isNaN(result)) {
+            System.out.println("Result: " + result);
+        }
+    }
+
+    // Method to divide two numbers
+    public static double divide(double num1, double num2) {
+        if (num2 == 0) {
+            System.out.println("Error: Cannot divide by zero.");
+            return Double.NaN; // Not a Number
+        }
+        return num1 / num2;
     }
 
 
